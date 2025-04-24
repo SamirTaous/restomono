@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace restomono.Models
+namespace restomono.Models;
+
+public class Plat
 {
-    public class Plat{
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public string ImageUrl { get; set; } // optional for now
-    }
+    [Key]
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
 }

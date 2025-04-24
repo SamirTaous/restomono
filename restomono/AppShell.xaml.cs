@@ -1,10 +1,12 @@
-﻿namespace restomono
+﻿namespace restomono;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        // Register pages with routes here
+        Routing.RegisterRoute("PaymentPage", typeof(Views.PaymentPage));
     }
 }

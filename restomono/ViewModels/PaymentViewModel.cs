@@ -14,6 +14,20 @@ public partial class PaymentViewModel : ObservableObject
     async Task ConfirmPayment()
     {
         await Task.Delay(1000); // Simulate processing
-        confirmationMessage = $"✅ Payment successful! Thank you, {Name}.";
+
+        await Shell.Current.DisplayAlert("Payment Confirmed", $"Thank you, {Name}! Your order has been placed.", "OK");
+
+        // Clear form
+        Name = string.Empty;
+        CardNumber = string.Empty;
+        ConfirmationMessage = string.Empty;
+
+        // Clear cart
+        AppData.MenuVM.CartItems.Clear();
+        AppData.MenuVM.Total = 0;
+
+        // Navigate back to MenuPage
+        await Shell.Current.Navigation.PopToRootAsync(); // back to Menu
     }
+
 }

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace restomono.Models
+namespace restomono.Models;
+
+public partial class CartItem : ObservableObject
 {
-    public class CartItem
-    {
-        public Plat Plat { get; set; }
-        public int Quantity { get; set; }
-        public decimal TotalPrice => Quantity * Plat.Price;
-    }
+    [ObservableProperty]
+    private Plat plat;
+
+    [ObservableProperty]
+    private int quantity;
+
+    public decimal TotalPrice => quantity * plat.Price;
 }

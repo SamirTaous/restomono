@@ -9,7 +9,7 @@ namespace restomono.ViewModels
 {
     public partial class MenuViewModel : ObservableObject
     {
-        private readonly DataService _dataService = new();
+        private readonly DatabaseService _dbService = new();
 
         public ObservableCollection<Plat> Plats { get; } = new();
         public ObservableCollection<CartItem> CartItems { get; } = new();
@@ -19,7 +19,16 @@ namespace restomono.ViewModels
 
         public MenuViewModel()
         {
-            foreach (var plat in _dataService.GetMenu())
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            await _dbService.SeedAsync(); // only seeds if empty
+            var plats = await _dbService.GetPlatsAsync();
+
+            Plats.Clear();
+            foreach (var plat in plats)
                 Plats.Add(plat);
         }
 
@@ -35,4 +44,5 @@ namespace restomono.ViewModels
             Total = CartItems.Sum(x => x.TotalPrice);
         }
     }
+
 }
