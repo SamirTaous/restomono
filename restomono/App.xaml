@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:restomono"
+             xmlns:conv="clr-namespace:restomono.Converters"
              x:Class="restomono.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,10 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Converters -->
+            <conv:IsGreaterThanOneConverter x:Key="IsGreaterThanOneConverter" />
+            <conv:IsLessThanTotalConverter x:Key="IsLessThanTotalConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
