@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="restomono.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:restomono.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="restomono">
+
+    <!-- Set MenuPage as the main screen -->
+    <ShellContent
+        Title="Menu"
+        ContentTemplate="{DataTemplate views:MenuPage}"
+        Route="MenuPage" />
+
+    <!-- Other pages (navigated programmatically) -->
+    <!--<ShellContent
+        Title="Cart"
+        ContentTemplate="{DataTemplate views:CartPage}"
+        Route="CartPage"
+        IsVisible="False" />
+-->
+    <ShellContent
+        Title="Payment"
+        ContentTemplate="{DataTemplate views:PaymentPage}"
+        Route="PaymentPage"
+        IsVisible="False" />
+
+</Shell>

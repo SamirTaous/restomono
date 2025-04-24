@@ -1,0 +1,29 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:restomono.ViewModels"
+             x:Class="restomono.Views.CartPage"
+             Title="Cart">
+
+    <VerticalStackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding CartItems}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" BorderColor="LightGray">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Plat.Name}" FontSize="18" />
+                            <Label Text="{Binding TotalPrice, StringFormat='Subtotal: {0} DH'}" />
+                            <HorizontalStackLayout>
+                                <Button Text="-" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartViewModel}}, Path=DecreaseQuantityCommand}" CommandParameter="{Binding .}" />
+                                <Label Text="{Binding Quantity}" FontSize="16" />
+                                <Button Text="+" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartViewModel}}, Path=IncreaseQuantityCommand}" CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Text="{Binding Total, StringFormat='Total: {0} DH'}" FontSize="20" HorizontalOptions="Center" Margin="10" />
+        <Button Text="Proceed to Payment" Command="{Binding ProceedToPaymentCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
