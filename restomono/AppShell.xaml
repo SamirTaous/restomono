@@ -7,23 +7,27 @@
     Shell.FlyoutBehavior="Disabled"
     Title="restomono">
 
-    <!-- Set MenuPage as the main screen -->
+    <!-- Set LoginPage as the initial route -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage"
+        IsVisible="False" />
+
     <ShellContent
         Title="Menu"
         ContentTemplate="{DataTemplate views:MenuPage}"
         Route="MenuPage" />
 
-    <!-- Other pages (navigated programmatically) -->
-    <!--<ShellContent
-        Title="Cart"
-        ContentTemplate="{DataTemplate views:CartPage}"
-        Route="CartPage"
-        IsVisible="False" />
--->
     <ShellContent
         Title="Payment"
         ContentTemplate="{DataTemplate views:PaymentPage}"
         Route="PaymentPage"
         IsVisible="False" />
 
+    <ShellContent
+        Title="Profile"
+        ContentTemplate="{DataTemplate views:ProfilePage}"
+        Route="ProfilePage"
+        IsVisible="False" />
 </Shell>

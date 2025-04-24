@@ -16,9 +16,15 @@
     </ContentPage.BindingContext>
 
     <Grid RowDefinitions="Auto,*,Auto">
-        <!-- Navbar -->
+        <!-- Navbar with profile button -->
         <Grid Padding="10" BackgroundColor="#FF5722" Row="0" ColumnDefinitions="*,Auto">
             <Label Text="RestoMono" TextColor="White" FontSize="22" VerticalOptions="Center" />
+            <Button Text="👤"
+                    Command="{Binding GoToProfileCommand}"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="22"
+                    HorizontalOptions="End" />
         </Grid>
 
         <!-- Main Content -->

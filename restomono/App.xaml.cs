@@ -1,15 +1,18 @@
-﻿namespace restomono
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
+﻿namespace restomono;
 
-        protected override Window CreateWindow(IActivationState? activationState)
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        // Load the AppShell
+        MainPage = new AppShell();
+
+        // ✅ Navigate to LoginPage using relative routing
+        Application.Current.Dispatcher.Dispatch(async () =>
         {
-            return new Window(new AppShell());
-        }
+            await Shell.Current.GoToAsync("LoginPage");
+        });
     }
 }

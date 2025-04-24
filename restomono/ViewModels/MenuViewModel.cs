@@ -59,16 +59,8 @@ public partial class MenuViewModel : ObservableObject
             existing.Quantity++;
 
         Total = CartItems.Sum(x => x.TotalPrice);
-
-
-        try
-        {
-            await Toast.Make($"✅ {plat.Name} added!", ToastDuration.Short).Show();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("⚠️ Toast error: " + ex.Message);
-        }
+        try { await Toast.Make($"✅ {plat.Name} added!", ToastDuration.Short).Show(); }
+        catch (Exception ex) { Console.WriteLine("Toast error: " + ex.Message); }
     }
 
     [RelayCommand]
@@ -81,7 +73,6 @@ public partial class MenuViewModel : ObservableObject
                 CartItems.Remove(existing);
             else
                 existing.Quantity--;
-
             Total = CartItems.Sum(x => x.TotalPrice);
         }
     }
@@ -104,15 +95,14 @@ public partial class MenuViewModel : ObservableObject
     async Task ShowCartPopup()
     {
         var popup = new CartPopup(CartItems, Total);
-
         var page = Shell.Current?.CurrentPage ?? Application.Current?.MainPage;
         if (page is not null)
-        {
             await page.ShowPopupAsync(popup);
-        }
-        else
-        {
-            Console.WriteLine("⚠️ No valid page available to show popup.");
-        }
+    }
+
+    [RelayCommand]
+    async Task GoToProfile()
+    {
+        await Shell.Current.GoToAsync("ProfilePage");
     }
 }

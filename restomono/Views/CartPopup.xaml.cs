@@ -1,4 +1,4 @@
-using CommunityToolkit.Maui.Views;
+﻿using CommunityToolkit.Maui.Views;
 using restomono.Models;
 using System.Collections.ObjectModel;
 
@@ -19,7 +19,9 @@ public partial class CartPopup : Popup
 
     private async void OnProceedClicked(object sender, EventArgs e)
     {
-        Close(); // close the popup
-        await Shell.Current.Navigation.PushAsync(new PaymentPage());
+        Close(); // Close the popup
+
+        // ✅ Pass the total to PaymentPage
+        await Shell.Current.Navigation.PushAsync(new PaymentPage(Total));
     }
 }

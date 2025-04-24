@@ -1,22 +1,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:restomono.ViewModels"
              x:Class="restomono.Views.PaymentPage"
              Title="Payment">
 
-    <ContentPage.BindingContext>
-        <viewModels:PaymentViewModel />
-    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label Text="Confirm Your Payment" FontSize="24" HorizontalOptions="Center" />
 
-    <VerticalStackLayout Padding="20">
-        <Label Text="Name on Card:" />
-        <Entry Text="{Binding Name}" Placeholder="Your name" />
+        <!-- Read-only name field -->
+        <Label Text="Name:" />
+        <Entry x:Name="nameEntry" IsReadOnly="True" />
 
         <Label Text="Card Number:" />
-        <Entry Text="{Binding CardNumber}" Keyboard="Numeric" Placeholder="0000 0000 0000 0000" />
+        <Entry Placeholder="Card number" Keyboard="Numeric" />
 
-        <Button Text="Confirm Payment" Command="{Binding ConfirmPaymentCommand}" />
-
-        <Label Text="{Binding ConfirmationMessage}" FontSize="18" TextColor="Green" Margin="10" />
+        <Button Text="Confirm Payment" Clicked="OnConfirmPaymentClicked" />
     </VerticalStackLayout>
 </ContentPage>

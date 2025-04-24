@@ -1,5 +1,5 @@
-﻿using restomono.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using restomono.Models;
 
 namespace restomono.Services;
 
@@ -21,7 +21,13 @@ public class DatabaseService
                 new Plat { Name = "Caesar Salad", Description = "Chicken, Lettuce, Parmesan", Price = 40 },
                 new Plat { Name = "Spaghetti Carbonara", Description = "Cream, Bacon, Parmesan", Price = 55 }
             );
-            await _context.SaveChangesAsync();
         }
+
+        if (!_context.Users.Any())
+        {
+            _context.Users.Add(new User { Name = "test", Wallet = 150 });
+        }
+
+        await _context.SaveChangesAsync();
     }
 }

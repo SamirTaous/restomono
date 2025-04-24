@@ -1,0 +1,16 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:restomono.ViewModels"
+             x:Class="restomono.Views.ProfilePage"
+             Title="Profile">
+
+    <ContentPage.BindingContext>
+        <viewModels:ProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label Text="👤 My Profile" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="{Binding Name}" FontSize="20" />
+        <Label Text="{Binding Wallet, StringFormat='Wallet: {0} DH'}" FontSize="20" />
+    </VerticalStackLayout>
+</ContentPage>
