@@ -1,0 +1,44 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:restomono.ViewModels"
+             x:Class="restomono.Views.PlatCrudPage"
+             Title="Manage Dishes">
+
+    <ContentPage.BindingContext>
+        <viewModels:PlatCrudViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Entry Placeholder="Name" Text="{Binding NewPlat.Name}" />
+            <Entry Placeholder="Description" Text="{Binding NewPlat.Description}" />
+            <Entry Placeholder="Price" Text="{Binding NewPlat.Price}" Keyboard="Numeric" />
+
+            <Button Text="Add / Update Dish" Command="{Binding SavePlatCommand}" />
+
+            <CollectionView ItemsSource="{Binding Plats}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="LightGray">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding Description}" />
+                                <Label Text="{Binding Price, StringFormat='Price: {0} DH'}" />
+                                <HorizontalStackLayout>
+                                    <Button Text="Edit"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlatCrudViewModel}}, Path=EditPlatCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    <Button Text="Delete"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlatCrudViewModel}}, Path=DeletePlatCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

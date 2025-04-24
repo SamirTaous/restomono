@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:restomono.ViewModels"
+             x:Class="restomono.Views.UserCrudPage"
+             Title="Manage Clients">
+
+    <ContentPage.BindingContext>
+        <viewModels:UserCrudViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Entry Placeholder="Client Name" Text="{Binding NewUser.Name}" />
+        <Entry Placeholder="Wallet Amount" Text="{Binding NewUser.Wallet}" Keyboard="Numeric" />
+
+        <Button Text="Add / Update User" Command="{Binding SaveUserCommand}" />
+
+        <CollectionView ItemsSource="{Binding Users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="LightGray">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Wallet, StringFormat='Wallet: {0} DH'}" />
+                            <HorizontalStackLayout>
+                                <Button Text="Edit"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:UserCrudViewModel}}, Path=EditUserCommand}"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="Delete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:UserCrudViewModel}}, Path=DeleteUserCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

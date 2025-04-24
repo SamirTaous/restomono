@@ -7,13 +7,14 @@
     Shell.FlyoutBehavior="Disabled"
     Title="restomono">
 
-    <!-- Set LoginPage as the initial route -->
+    <!-- Initial Route -->
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage"
         IsVisible="False" />
 
+    <!-- Main Pages -->
     <ShellContent
         Title="Menu"
         ContentTemplate="{DataTemplate views:MenuPage}"
@@ -30,4 +31,25 @@
         ContentTemplate="{DataTemplate views:ProfilePage}"
         Route="ProfilePage"
         IsVisible="False" />
+
+    <!-- Admin Dashboard -->
+    <ShellContent
+        Title="Statistics"
+        ContentTemplate="{DataTemplate views:StatisticsPage}"
+        Route="StatisticsPage"
+        IsVisible="False" />
+
+    <!-- Admin CRUD Pages -->
+    <ShellContent
+        Title="Manage Dishes"
+        ContentTemplate="{DataTemplate views:PlatCrudPage}"
+        Route="PlatCrudPage"
+        IsVisible="False" />
+
+    <ShellContent
+        Title="Manage Clients"
+        ContentTemplate="{DataTemplate views:UserCrudPage}"
+        Route="UserCrudPage"
+        IsVisible="False" />
+
 </Shell>

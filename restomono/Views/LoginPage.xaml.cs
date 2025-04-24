@@ -11,10 +11,23 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        var success = await AuthService.LoginAsync(usernameEntry.Text);
+        string username = usernameEntry.Text?.Trim();
+
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            await DisplayAlert("Error", "Please enter a username.", "OK");
+            return;
+        }
+
+        var success = await AuthService.LoginAsync(username);
+
         if (success)
         {
-            await Shell.Current.GoToAsync("//MenuPage");
+            // Create shell dynamically based on role
+            if (username.ToLower() == "admin")
+                Application.Current.MainPage = new AdminShell();
+            else
+                Application.Current.MainPage = new AppShell();
         }
         else
         {

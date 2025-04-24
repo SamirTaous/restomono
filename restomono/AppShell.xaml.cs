@@ -8,10 +8,12 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
 
-        // ✅ Register all routable pages for navigation
         Routing.RegisterRoute("LoginPage", typeof(LoginPage));
         Routing.RegisterRoute("MenuPage", typeof(MenuPage));
-        Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
         Routing.RegisterRoute("PaymentPage", typeof(PaymentPage));
+        Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
+        Routing.RegisterRoute("StatisticsPage", typeof(StatisticsPage));
+        Routing.RegisterRoute("PlatCrudPage", typeof(PlatCrudPage));
+        Routing.RegisterRoute("UserCrudPage", typeof(UserCrudPage));
     }
 }
